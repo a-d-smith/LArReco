@@ -10,6 +10,8 @@
 #include "Helpers/XmlHelper.h"
 #include "Xml/tinyxml.h"
 
+#include "analysiscontent/AnalysisContent.h"
+
 #include "larpandoracontent/LArContent.h"
 #include "larpandoracontent/LArControlFlow/MasterAlgorithm.h"
 #include "larpandoracontent/LArControlFlow/MultiPandoraApi.h"
@@ -83,6 +85,7 @@ void CreatePandoraInstances(const Parameters &parameters, const Pandora *&pPrima
 {
     pPrimaryPandora = new Pandora();
     PANDORA_THROW_RESULT_IF(STATUS_CODE_SUCCESS, !=, LArContent::RegisterAlgorithms(*pPrimaryPandora));
+    PANDORA_THROW_RESULT_IF(STATUS_CODE_SUCCESS, !=, AnalysisContent::RegisterAlgorithms(*pPrimaryPandora));
     PANDORA_THROW_RESULT_IF(STATUS_CODE_SUCCESS, !=, LArContent::RegisterBasicPlugins(*pPrimaryPandora));
 
     if (!pPrimaryPandora)

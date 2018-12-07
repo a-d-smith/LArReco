@@ -24,8 +24,9 @@ include_directories(include)
 
 find_package(PandoraSDK 03.03.00 REQUIRED)
 find_package(LArContent 03.14.00 REQUIRED)
+find_package(AnalysisContent 00.01.00 REQUIRED)
 
-foreach(package PandoraSDK LArContent)
+foreach(package PandoraSDK LArContent AnalysisContent)
     if(${package}_FOUND)
         include_directories(${${package}_INCLUDE_DIRS})
         link_libraries(${${package}_LIBRARIES})
